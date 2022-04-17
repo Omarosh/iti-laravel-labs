@@ -24,11 +24,10 @@
                 <td>{{ $post['post_creator'] }}</td>
                 <td>{{ $post['created_at'] }}</td>
                 <td>
-                    <a href="{{ route('post.show', ['post' => $post['id']]) }}" class="btn btn-info">View</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
-                    <mybutton type="primary" :href='#' text="Test"/>
-
+                   
+                    <x-mybutton type="primary" href="{{ route('post.show', ['post' => $post['id']]) }}" text="View"/>
+                    <x-mybutton type="secondary" href='#' text="edit"/>
+                    <x-mybutton type="danger" href='#' text="Delete"/>
 
                 </td>
               </tr>
