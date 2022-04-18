@@ -14,7 +14,7 @@
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <p><span class="fs-5 fst-italic">description : </span>{{$post['desc']}}</p>
-       <h4> <span class="fs-5 fst-italic">creator : </span>{{$post['post_creator']}}</h4>
+       <h4> <span class="fs-5 fst-italic">creator : </span>{{$post->user()->get()[0]->name}}</h4>
         <footer class="blockquote-footer">created At : <cite title="Source Title">{{Carbon\Carbon::createFromTimeString($post['created_at'])->toDayDateTimeString()}}</cite></footer>
       </blockquote>
     </div>

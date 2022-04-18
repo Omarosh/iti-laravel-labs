@@ -13,12 +13,10 @@ class mybutton extends Component
      */
     public $type;
     public $href;
-    public $text;
     
-    public function __construct($type, $text , $href)
+    public function __construct($type, $href)
     {
         $this->type = $type;
-        $this->text = $text;
         $this->href = $href;
     }
 

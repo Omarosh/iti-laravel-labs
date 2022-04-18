@@ -61,22 +61,32 @@ class PostController extends Controller
     public function show($postId)
     {
         $post = Post::find($postId);
-        dd($post);
         return view('posts.show',[
             'post' =>$post ,
         ]);
     }
 
-
-    public function edit($id)
+    public function edit(Post $post)
     {
-        
+        //
+        // dd($post);
+        $authors = [];
+        $post = Post::find($post);
+        foreach (User::all() as $k) {
+            array_push($authors, [$k["id"] , $k["name"]] );
+        }
+        $users = User::all();
+        return view('posts.edit',['post'=>$post, 'users' => $users,'authors' => $authors]);
     }
 
-  
-    public function update(Request $request, $id)
+    public function update(Request $request, POST $post)
     {
-       
+        
+        // dd($post);
+        $post->title  = $request->all()["title"];
+        // dd($post);
+        $post->update($request->all());
+        return to_route("post.show", ['post' => $post]);
     }
 
    

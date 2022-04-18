@@ -26,9 +26,9 @@
                 <td>{{ $post['created_at2'] }}</td>
                 <td>
                    
-                    <x-mybutton type="primary" href="{{ route('post.show', ['post' => $post['id']]) }}" text="View"/>
-                    <x-mybutton type="secondary" href='#' text="edit"/>
-                    <x-mybutton type="danger" href='#' text="Delete"/>
+                    <x-mybutton type="primary" href="{{ route('post.show', ['post' => $post['id']]) }}"> View </x-mybutton>
+                    <x-mybutton type="secondary" href="{{route('post.edit', ['post'=>$post])}}"> Edit </x-mybutton>
+                    {{-- <x-mybutton type="danger" href="{{route('posts.delete', ['post'=>$post])}}"> Delete </x-mybutton> --}}
 
                 </td>
               </tr>
