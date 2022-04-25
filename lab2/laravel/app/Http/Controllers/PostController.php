@@ -17,7 +17,7 @@ class PostController extends Controller
         // $filteredPosts = Post::where('title', 'CSS')->get();
         // dd($filteredPosts);
 
-        $posts = Post::all(); //select * from posts;
+        $posts = Post::withTrashed()->paginate(5); //select * from posts;
         //  dd($posts[0]->desc);
         //  $posts[0]->user()->get()[0]->name
         foreach ($posts as $k) {
@@ -90,9 +90,17 @@ class PostController extends Controller
     }
 
    
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-       
+        
+        $post->delete();
+        return redirect()->route('index')->with('delete', "Your post ($post->id) was successfully deleted");
+    }
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->find($id);
+        $post->restore();
+        return redirect()->route('index')->with('restore', "Your post ($id) was successfully restored");
     }
  
 }
